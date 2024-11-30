@@ -21,16 +21,6 @@ render(
 )
 ```
 
-## Option Object
+## NOTICE
+2d-branch 业务改造分支，基于原始仓库1.1.1拉取版本
 
-| name | desc | default |
-| ---- | ----------- | --------- |
-| `lg` | language, support `en_US` or `zh_CN` | en_US 
-
-## SchemaEditor Props
-
-| name | type | default | desc
-| ---- | ----------- | --------- | --------- |
-| `data` | string | null | the data of editor
-| `onChange`| function | null | 
-| `showEditor` | boolean | false | 
