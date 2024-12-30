@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { combineReducers, createStore, applyMiddleware } from 'redux';
 import 'antd/dist/antd.css';
 
 if (process.env.NODE_ENV !== 'production') {

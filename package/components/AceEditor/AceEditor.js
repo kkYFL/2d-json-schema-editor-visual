@@ -66,7 +66,7 @@ class AceEditor extends React.PureComponent {
       <div
         className={this.props.className}
         style={
-          this.props.className ? undefined : this.props.style || { width: '100%', height: '200px' }
+          this.props.className ? undefined : this.props.style || { width: '100%', height: '500px' }
         }
         ref={editor => {
           this.editorElement = editor;
