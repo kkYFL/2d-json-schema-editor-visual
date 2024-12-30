@@ -1,11 +1,10 @@
-var ace = require("brace");
-require("brace/mode/json");
+var ace = require("2d-brace");
+require("2d-brace/mode/json");
 
 function run(options) {
   var editor, mockEditor, rhymeCompleter;
   function handleJson(json) {
     var curData = mockEditor.curData;
-    console.log('handleJosn+++QQQQ', curData)
     try {
       curData.text = json;
       var obj = JSON.parse(json);
@@ -45,7 +44,6 @@ function run(options) {
     curData: {},
     getValue: () => mockEditor.curData.text,
     setValue: function (data) {
-      console.log("setValue++++");
       editor.setValue(handleData(data));
     },
     editor: editor,
@@ -57,9 +55,7 @@ function run(options) {
   };
 
   function handleData(data) {
-    console.log("handleDATA+++");
     data = data || "";
-    console.log("tyoefo", typeof data);
     if (typeof data === "string") {
       return data;
     } else if (typeof data === "object") {
@@ -68,13 +64,10 @@ function run(options) {
   }
 
   function isJSON(str) {
-    console.log('isJOns+++')
     try {
       const parsed = JSON.parse(str); // 尝试解析字符串
-      console.log('isJOns+++1111111')
       return typeof parsed === "object" && parsed !== null; // 确保是对象或数组
     } catch (error) {
-      console.log('isJOns+++222222')
       return false; // 捕获解析错误
     }
   }
@@ -95,8 +88,6 @@ function run(options) {
       }
     } catch (error) {
       return false;
-      // 不是合法的 JSON
-      throw new Error("Invalid JSON: " + error.message);
     }
   }
 
@@ -106,19 +97,7 @@ function run(options) {
   editor.clearSelection();
 
   editor.getSession().on("change", () => {
-    console.log("editor.getSession++++", isFormattedJSON(editor.getValue()));
     const txt = editor.getValue()
-    if (isJSON(txt) && !isFormattedJSON(txt)) {
-      let formatJson = txt;
-      try {
-        const jsonObject = JSON.parse(txt);
-        formatJson = JSON.stringify(jsonObject, null, "  ");
-        console.log('josn out+++', formatJson)
-        mockEditor.setValue(formatJson)
-      } catch (error) { }
-    } else { 
-      console.log('josn out222+++', txt)
-    }
     handleJson(txt);
     if (typeof options.onChange === "function") {
       options.onChange.call(mockEditor, mockEditor.curData);

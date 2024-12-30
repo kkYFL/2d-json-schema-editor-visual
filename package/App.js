@@ -283,7 +283,7 @@ class jsonSchema extends React.Component {
           title={LocalProvider('import_json')}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
-          width={660}
+          width={800}
           className="json-schema-react-editor-import-modal"
           okText={'ok'}
           cancelText={LocalProvider('cancel')}
